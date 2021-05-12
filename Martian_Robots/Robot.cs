@@ -15,12 +15,16 @@ namespace Martian_Robots
         
         public void Move(Robot robot, string movement)
         {
-            string[] movementLetters = movement.Split(' ');
-            foreach (var move in movementLetters)
+            //string[] movementLetters = movement.Split(' ');
+            //foreach (var move in movementLetters)
+            foreach (char move in movement)
             {
-                CardinalPointOrientation(robot, Convert.ToChar(move.FirstOrDefault()));
-                if (robot.lost)
-                    return;
+                if (move != ' ')
+                {                    
+                    CardinalPointOrientation(robot, move);
+                    if (robot.lost)
+                        return;
+                }
             }
         }
 
