@@ -59,6 +59,8 @@ namespace Martian_Robots
                     }
                     if (lane.Length <= MarsClasses.maxInstructions && firstLaneValid)
                     {
+                        if (lane.Length == 0) //Si hay un salto de línea en la instrucción, lo ignora
+                        return;
                         if (ContainsNumber(lane))
                         {
                             robot = CreateRobot(lane);
