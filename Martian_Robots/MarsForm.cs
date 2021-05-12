@@ -20,6 +20,7 @@ namespace Martian_Robots
             public static int maxInstructions = 100;
             public static int[,] gridMarsSize;
             public static Scent scent = new Scent();
+            public static bool badInstruction = true;
         }        
         public static Robot robot;
         public MarsForm()
@@ -28,7 +29,7 @@ namespace Martian_Robots
         }
 
         private void marsSizebtn_Click(object sender, EventArgs e)
-        {
+        {            
             string[] sizes = marsSize.Text.Split(' ');
             if (marsSize.Text != "" && isNumeric(sizes) && sizes.Count() == 2 && MaxCoordinates(sizes))
             {
@@ -41,6 +42,7 @@ namespace Martian_Robots
         }
         private void robotsInstructionsbtn_Click(object sender, EventArgs e)
         {
+            MarsClasses.badInstruction = true;
             if (MarsClasses.gridMarsSize == null) //Obliga a marcar primero el tamaño de Marte antes de situar/mover los robots
             {
                 badInput();
@@ -59,7 +61,7 @@ namespace Martian_Robots
                     }
                     if (lane.Length <= MarsClasses.maxInstructions && firstLaneValid)
                     {
-                        if (lane.Length == 0) //Si hay un salto de línea en la instrucción, lo ignora
+                        if (lane.Length <= 1) //Si hay un salto de línea en la instrucción, lo ignora
                         return;
                         if (ContainsNumber(lane))
                         {
@@ -68,6 +70,11 @@ namespace Martian_Robots
                         else
                         {
                             robot.Move(robot, lane);
+                            if (!MarsClasses.badInstruction)
+                            {
+                                return;
+                            }
+                                
                             string positionMsg = "The robot is in: " + robot.position[0].ToString() + " " + robot.position[1].ToString() + " " + robot.orientation;
                             if (robot.lost)                            
                                 MessageBox.Show(positionMsg + " LOST");                            

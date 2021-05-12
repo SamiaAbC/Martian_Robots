@@ -94,7 +94,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 36);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Example: \r\n3 2 N";
+            this.label2.Text = "Example: \r\n3 2";
             this.label2.Visible = false;
             // 
             // label3
@@ -109,7 +109,7 @@
             this.label3.Text = "Example:\r\n3 2 N\r\nF R R F L L F F R R F L L";
             this.label3.Visible = false;
             // 
-            // Mars
+            // MarsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -121,7 +121,7 @@
             this.Controls.Add(this.marsSize);
             this.Controls.Add(this.robotsInstructionsbtn);
             this.Controls.Add(this.marsSizebtn);
-            this.Name = "Mars";
+            this.Name = "MarsForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
